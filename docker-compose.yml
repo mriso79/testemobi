@@ -1,0 +1,33 @@
+version: "2"
+services:
+  postgres:
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 6432
+    ports:
+      - 6432:5432
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mobi
+    restart: unless-stopped
+  # APP*****************************************
+  testmobi:
+    image: testmobi:latest
+    network_mode: bridge
+    container_name: testmobi
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    links:
+      - postgres
+volumes:
+  postgres-data:

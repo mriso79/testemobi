@@ -17,57 +17,56 @@ O processo ocorre da seguinte forma:
 
 - Primeiramente o usuário é cadastrado.
 
-
-     * Criando um usuário
-     * POST para http://localhost:8080/v1/user
-     *
-     * Payload:
-     *
-     * {
-     *     "username":"João da Silva",
-     *     "cpf":"53543856600"
-     * }
- 
+     Criando um usuário
+     POST para http://localhost:8080/v1/user
+     
+     Payload:
+     
+```json 
+      {
+          "username":"João da Silva",
+          "cpf":"53543856600"
+      }
+ ``` 
  Obs: Não criei verificação para remover pontos e traços. Mas se fosse algo em produção certamente o faria.
 
 - Após, é criada uma pauta.
 
-
-     * Criando uma pauta: http://localhost:8080/v1/pauta
-     *
-     * Payload:
-     * {
-     *     "descricao":"Votação de Teste"
-     * }
-     *
-
+      Criando uma pauta: http://localhost:8080/v1/pauta
+     
+      Payload:
+```json 
+      {
+          "descricao":"Votação de Teste"
+      }
+ ```
 - Em seguida, é aberta uma sessão.
 
    
-     * Criando uma Sessao: http://localhost:8080/v1/sessao
-     *
-     * Payload de exemplo:
-     * {
-     *     "foi_aberta": true,
-     *     "pautaid": 2,
-     *     "data_abertura": "2021-10-06 18:42:00",
-     *     "tempo_determinado": 60
-     * }
-     *
+      Criando uma Sessao: http://localhost:8080/v1/sessao
+      Payload de exemplo:
+```json
+      {
+          "foi_aberta": true,
+          "pautaid": 2,
+          "data_abertura": "2021-10-06 18:42:00",
+          "tempo_determinado": 60
+      }
+  ```    
 
 - Os usuários podem então, votar.
-
     
-     * Voto do Usuário: http://localhost:8080/v1/voto
-     *
-     * Payload exemplo:
-     * {
-     *     "usuarioid":1,
-     *     "pauta_id": 2,
-     *     "data_voto": "2021-10-06 19:50:01",
-     *     "voto":Sim (Nao)
-     * }
-
+      Voto do Usuário: http://localhost:8080/v1/voto
+     
+      Payload exemplo:
+```json
+      {
+          "usuarioid":1,
+          "pauta_id": 2,
+          "data_voto": "2021-10-06 19:50:01",
+          "voto":Sim (Nao)
+      }
+  ``` 
 Obs: Eu evitei de colocar relações oneToMany devido ao curto tempo.
 
 ## Executando o Sistema

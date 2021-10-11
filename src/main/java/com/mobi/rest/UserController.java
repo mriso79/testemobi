@@ -26,7 +26,7 @@ public class UserController {
      *
      * {
      *     "username":"Marcos",
-     *     "cpf":"21804536806"
+     *     "cpf":"53543856600"
      * }
      *
      * @param usuario
